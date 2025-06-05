@@ -1,10 +1,9 @@
 require "rails_helper"
 
-RSpec.describe "Devise::Logout", type: :system do
+RSpec.describe "Devise::SignOut", type: :system do
   let(:user) { create(:user) }
 
   before do
-    driven_by(:rack_test)
     sign_in user
   end
 
@@ -21,6 +20,7 @@ RSpec.describe "Devise::Logout", type: :system do
     visit root_path
     click_link "Logout"
 
+    sleep 0.1 # Allow time for the logout to process
     expect(current_path).to eq(new_user_session_path)
   end
 end

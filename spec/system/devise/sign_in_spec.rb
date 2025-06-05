@@ -1,14 +1,10 @@
 require 'rails_helper'
 
-RSpec.describe "Devise::Logins", type: :system do
-  before do
-    driven_by(:rack_test)
-  end
+RSpec.describe "Devise::SignIn", type: :system do
+  let(:user) { create(:user) }
 
-  describe "User Logins" do
+  describe "User sign in" do
     it "allows a user to register with valid credentials" do
-      user = FactoryBot.create(:user, email: "test@test.ru", password: "password")
-
       visit new_user_session_path
 
       fill_in "Email", with: user.email
