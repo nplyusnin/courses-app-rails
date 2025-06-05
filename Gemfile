@@ -47,6 +47,9 @@ group :development, :test do
 
   # Use FactoryBot for setting up Ruby objects as test data [https://github.com/thoughtbot/factory_bot_rails]
   gem "factory_bot_rails"
+
+  # Use Capybara for system tests []
+  gem "capybara"
 end
 
 group :development do
