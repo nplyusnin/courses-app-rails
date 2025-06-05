@@ -1,24 +1,14 @@
 # README
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+## How run the project
 
-Things you may want to cover:
+```
+cp https://github.com/nplyusnin/courses-app-rails
+asdf install
+cp docker-compose.yml.sample docker-compose.yml
+docker compose up -d
+bundle exec rake db:setup
+bundle exec rails s
+```
 
-* Ruby version
-
-* System dependencies
-
-* Configuration
-
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+Open http://localhost:3000
