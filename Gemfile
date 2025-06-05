@@ -48,8 +48,11 @@ group :development, :test do
   # Use FactoryBot for setting up Ruby objects as test data [https://github.com/thoughtbot/factory_bot_rails]
   gem "factory_bot_rails"
 
-  # Use Capybara for system tests []
+  # Use Capybara for system tests [https://github.com/teamcapybara/capybara]
   gem "capybara"
+
+  # Use Selenium for JavaScript tests [https://rubygems.org/gems/selenium-webdriver/versions/4.32.0]
+  gem "selenium-webdriver"
 end
 
 group :development do
