@@ -7,12 +7,12 @@ RSpec.describe "Devise::SignIn", type: :system do
     it "allows a user to register with valid credentials" do
       visit new_user_session_path
 
-      fill_in "Email", with: user.email
-      fill_in "Password", with: user.password
+      fill_in "Эл. почта", with: user.email
+      fill_in "Пароль", with: user.password
 
-      click_button "Log in"
+      click_button "Войти"
 
-      expect(page).to have_content("Signed in successfully.")
+      expect(page).to have_content("Вход в систему выполнен.")
       expect(page).to have_current_path(root_path)
     end
   end
