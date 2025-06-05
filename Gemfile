@@ -41,7 +41,7 @@ gem "rails-i18n"
 # Devise I18n support [https://github.com/tigrish/devise-i18n]
 gem "devise-i18n"
 
-# Bundle CSS [https://github.com/rails/cssbundling-rails]
+# Bundle and process CSS [https://github.com/rails/cssbundling-rails]
 gem "cssbundling-rails"
 
 group :development, :test do
