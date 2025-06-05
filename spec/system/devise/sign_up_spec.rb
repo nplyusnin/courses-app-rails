@@ -7,13 +7,13 @@ RSpec.describe "Devise::SignUp", type: :system do
     it "allows a user to register with valid credentials" do
       visit new_user_registration_path
 
-      fill_in "Эл. почта", with: user_attributes[:email]
-      fill_in "Пароль", with: user_attributes[:password]
-      fill_in "Подтверждение пароля", with: user_attributes[:password_confirmation]
+      fill_in I18n.t("activerecord.attributes.user.email"), with: user_attributes[:email]
+      fill_in I18n.t("activerecord.attributes.user.password"), with: user_attributes[:password]
+      fill_in I18n.t("activerecord.attributes.user.password_confirmation"), with: user_attributes[:password_confirmation]
 
-      click_button "Регистрация"
+      click_button I18n.t("devise.registrations.new.sign_up")
 
-      expect(page).to have_content("Добро пожаловать! Вы успешно зарегистрировались.")
+      expect(page).to have_content(I18n.t("devise.registrations.signed_up"))
       expect(page).to have_current_path(root_path)
       expect(User.last.email).to eq(user_attributes[:email])
     end
