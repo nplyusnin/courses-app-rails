@@ -7,20 +7,10 @@
     <div class="card-content">
       <div class="columns is-multiline">
         <div class="column is-6">
-          <div class="field">
-            <%= f.label :email, class: :label %>
-            <div class="control">
-              <%= f.text_field :email, class: :input %>
-            </div>
-          </div>
+          <%= f.text_field :email %>
         </div>
         <div class="column is-6">
-          <div class="field">
-            <%= f.label :role, class: :label %>
-            <div class="select" style="width: 100%;">
-              <%= f.select :role, User::AVAILABLE_MANAGING_ROLES.map { |v| [t("resources.users.roles.#{v}"), v] }, {}, { style: "width: 100%;" } %>
-            </div>
-          </div>
+          <%= f.select :role, User::AVAILABLE_MANAGING_ROLES.map { |v| [t("resources.users.roles.#{v}"), v] }, include_blank: true %>
         </div>
         <div class="column is-12">
           <%= f.submit class: "button" %>
