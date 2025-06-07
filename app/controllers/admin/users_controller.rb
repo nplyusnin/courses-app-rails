@@ -11,7 +11,7 @@ module Admin
 
     def update
       if @user.update(user_params)
-        redirect_to edit_admin_user_path(@user), notice: "User updated successfully."
+        redirect_to edit_admin_user_path(@user), notice: t("notices.admin.user.updated")
       else
         render :edit, status: :unprocessable_entity
       end
@@ -19,7 +19,7 @@ module Admin
 
     def destroy
       @user.destroy
-      redirect_to admin_users_path, notice: "User deleted successfully."
+      redirect_to admin_users_path, notice: t("notices.admin.user.destroyed")
     end
 
     private
@@ -27,11 +27,13 @@ module Admin
     def set_user() = @user = User.where.not(role: "admin").find(params[:id])
 
     def user_params
-      params.expect(user: [:email, :role])
+      params.expect(user: [:email, :role]).delete_if do |k, v|
+        k == :role && User::AVAILABLE_MANAGING_ROLES.exclude?(v)
+      end
     end
 
     def authenticate_admin!
-      redirect_to root_path, alert: "You are not authorized to access this page." if !current_user.admin?
+      redirect_to root_path, alert: t("notices.access_denied") if !current_user.admin?
     end
   end
 end

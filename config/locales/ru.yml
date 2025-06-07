@@ -1,2 +1,28 @@
-en:
-  hello: "Привет"
+ru:
+  helpers:
+    submit:
+      create: Создать
+      submit: Сохранить
+      update: Сохранить
+  activerecord:
+    attributes:
+      user:
+        role: "Роль"
+  notices:
+    admin:
+      user:
+        updated: "Пользователь успешно обновлен."
+        destroyed: "Пользователь успешно удален."
+    unauthorized:
+      access_denied: "Доступ запрещен."
+  resources:
+    users:
+      list: "Список пользователей"
+      to_list: "К списку пользователей"
+      edit: "Редактировать пользователя"
+      destroy: "Удалить пользователя"
+      confirm_destroy: "Вы уверены, что хотите удалить этого пользователя?"
+      roles:
+        student: "Студент"
+        teacher: "Учитель"
+        admin: "Администратор"

@@ -14,10 +14,10 @@ RSpec.describe "Admin::Users::Edit", type: :system do
 
     it "updates the user and redirects to the user's show page" do
       fill_in I18n.t("activerecord.attributes.user.email"), with: valid_user_params[:email]
-      click_button "Update User"
+      click_button I18n.t("helpers.submit.update")
 
       expect(page).to have_current_path(edit_admin_user_path(user))
-      expect(page).to have_content("User updated successfully.")
+      expect(page).to have_content(I18n.t("notices.admin.user.updated"))
       expect(user.reload.email).to eq(valid_user_params[:email])
     end
   end
@@ -32,7 +32,7 @@ RSpec.describe "Admin::Users::Edit", type: :system do
 
     it "does not update the user and re-renders the edit page" do
       fill_in I18n.t("activerecord.attributes.user.email"), with: invalid_user_params[:email]
-      click_button "Update User"
+      click_button I18n.t("helpers.submit.update")
 
       expect(page).to have_current_path(edit_admin_user_path(user))
       expect(user.reload.email).not_to eq(invalid_user_params[:email])

@@ -11,11 +11,11 @@ RSpec.describe "Admin::Users::Destroy", type: :system do
     end
 
     it "deletes the user and redirects to the users index page" do
-      click_link "Delete User"
+      click_link I18n.t("resources.users.destroy")
       accept_confirm
 
       expect(page).to have_current_path(admin_users_path)
-      expect(page).to have_content("User deleted successfully.")
+      expect(page).to have_content(I18n.t("notices.admin.user.destroyed"))
       expect(User.exists?(user.id)).to be_falsey
     end
   end
