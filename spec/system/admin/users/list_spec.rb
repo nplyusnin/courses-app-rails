@@ -26,7 +26,7 @@ RSpec.describe "Admin::Users::List", type: :system do
 
     it "redirects to the root path with an alert" do
       expect(page).to have_current_path(root_path)
-      expect(page).to have_content("You are not authorized to access this page.")
+      expect(page).to have_content(I18n.t("notices.access_denied"))
     end
   end
 end

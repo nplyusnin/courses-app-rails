@@ -1,4 +1,6 @@
 class User < ApplicationRecord
+  AVAILABLE_MANAGING_ROLES = %w[student teacher].freeze
+
   enum :role, { 
     student: "student",
     teacher: "teacher",
