@@ -12,4 +12,8 @@ RSpec.describe User, type: :model do
                                             .validating
     end
   end
+
+  describe "associations" do
+    it { is_expected.to have_many(:teaching_courses).class_name("Course").with_foreign_key("teacher_id").dependent(:destroy) }
+  end
 end
