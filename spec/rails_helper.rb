@@ -69,4 +69,21 @@ RSpec.configure do |config|
   config.filter_rails_from_backtrace!
   # arbitrary gems may also be filtered via:
   # config.filter_gems_from_backtrace("gem name")
+  
+  config.before(:each, type: :system) do
+    driven_by :rack_test # rack_test by default, for performance
+  end
+
+  # Configure FactoryBot methods to be available in specs
+  config.include FactoryBot::Syntax::Methods
+
+  # Configure devise test helpers
+  config.include Devise::Test::IntegrationHelpers, type: :system
+end
+
+Shoulda::Matchers.configure do |config|
+  config.integrate do |with|
+    with.test_framework :rspec
+    with.library :rails
+  end
 end
