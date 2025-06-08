@@ -1,0 +1,9 @@
+ru:
+  resources:
+    teacher:
+      courses:
+        index: "Ваши курсы"
+        show: "Детали курса"
+        new: "Создать новый курс"
+        edit: "Редактировать курс"
+        save_as_draft: "Сохранить как черновик"

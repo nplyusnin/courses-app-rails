@@ -1,0 +1,7 @@
+ru:
+  activerecord:
+    attributes:
+      course:
+        title: "Название курса"
+        description: "Описание курса"
+        image_preview: "Изображение курса"

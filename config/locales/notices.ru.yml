@@ -1,0 +1,7 @@
+ru:
+  notices:
+    teacher:
+      courses:
+        created: "Курс успешно создан."
+        updated: "Курс успешно обновлен."
+        deleted: "Курс успешно удален."
