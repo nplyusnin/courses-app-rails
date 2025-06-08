@@ -37,3 +37,6 @@
 !/app/assets/builds/.keep
 
 /node_modules
+
+# Ignore docker-compose.yml file for local development.
+/docker-compose.yml
