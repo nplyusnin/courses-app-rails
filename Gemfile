@@ -46,6 +46,15 @@ group :development, :test do
 
   # Static analysis for security vulnerabilities [https://brakemanscanner.org/]
   gem "brakeman", require: false
+
+  # RSpec as the testing framework [https://rspec.info/]
+  gem "rspec-rails"
+
+  # Use FactoryBot for setting up Ruby objects as test data [https://github.com/thoughtbot/factory_bot_rails]
+  gem "factory_bot_rails"
+
+  # Use Capybara for system tests [https://github.com/teamcapybara/capybara]
+  gem "capybara"
 end
 
 group :development do
