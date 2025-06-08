@@ -38,5 +38,9 @@ module CoursesAppRails
 
     # Don't generate system test files.
     config.generators.system_tests = nil
+
+    # Use locales from the `rails-i18n` gem.
+    config.i18n.default_locale = :ru
+    config.i18n.available_locales = [:ru]
   end
 end
