@@ -1,2 +1,3 @@
 ru:
-  hello: "Привет"
+  bulma_builder:
+    choose_file: "Выберите файл"

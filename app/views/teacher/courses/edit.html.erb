@@ -1,9 +1,11 @@
 <%= render "form", course: @course, action_name: "edit" %>
 
-<%= link_to t("resources.teacher.courses.destroy"),
-            teacher_course_path(@course),
-            class: "button is-danger",
-            data: {
-              "turbo-method" => "delete",
-              "turbo-confirm" => t("resources.teacher.courses.destroy_confirm")
-            } %>
+<div class="mt-3">
+  <%= link_to t("resources.teacher.courses.destroy"),
+              teacher_course_path(@course),
+              class: "button is-danger",
+              data: {
+                "turbo-method" => "delete",
+                "turbo-confirm" => t("resources.teacher.courses.destroy_confirm")
+              } %>
+</div>
