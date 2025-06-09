@@ -3,7 +3,7 @@ module Teacher
     before_action :authenticate_user!
     before_action :set_lesson, only: [:show, :edit, :update, :destroy]
     before_action :set_course, only: [:index, :new, :create]
-    before_action :load_course, only: [:show, :edit, :update]
+    before_action :load_course, only: [:show, :edit, :update, :destroy]
 
     def index() = @lessons = @course.lessons.order(:position)
 
