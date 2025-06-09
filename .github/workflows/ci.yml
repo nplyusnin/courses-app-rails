@@ -1,6 +1,25 @@
 name: CI
 on: [push]
 jobs:
+  rubocop:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Set up Ruby
+        uses: ruby/setup-ruby@v1
+        with:
+          ruby-version: "3.4.4"
+          bundler-cache: true
+
+      - name: Install RuboCop
+        run: gem install rubocop
+
+      - name: Run RuboCop
+        run: bundle exec rubocop
+
   specs:
     runs-on: ubuntu-latest
 
@@ -26,10 +45,6 @@ jobs:
         with:
           ruby-version: "3.4.4"
           bundler-cache: true
-
-      - name: Lint code
-        run: |
-          bundle exec rubocop
 
       - name: Run specs
         env:
