@@ -40,6 +40,9 @@ gem "devise"
 # Use for internationalization of Devise [https://github.com/tigrish/devise-i18n]
 gem "devise-i18n"
 
+# Use for internationalization of Rails [https://github.com/svenfuchs/rails-i18n]
+gem "rails-i18n"
+
 group :development, :test do
   # See https://guides.rubyonrails.org/debugging_rails_applications.html#debugging-with-the-debug-gem
   gem "debug", platforms: %i[ mri windows ], require: "debug/prelude"
