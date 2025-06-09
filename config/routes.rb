@@ -2,7 +2,9 @@ Rails.application.routes.draw do
   devise_for :users
 
   namespace :teacher do
-    resources :courses
+    resources :courses, shallow: true do
+      resources :lessons
+    end
   end
   # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
 
