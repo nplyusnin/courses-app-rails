@@ -1,10 +1,24 @@
 <h1 class="title"><%= t("resources.teacher.courses.index") %></h1>
 
-<ul>
+<div class="columns is-multiline">
   <% @courses.each do |course| %>
-    <li><%= link_to course.title, [:teacher, course] %></li>
+    <div class="column is-3">
+      <%= link_to [:teacher, course] do %>
+        <div class="box course-preview">
+          <div class="course-preview__image-container">
+            <% if course.preview_image.attached? %>
+              <%= image_tag course.preview_image.variant(resize_to_limit: [300, 300]),
+                            alt: course.title %>
+            <% else %>
+              <%= image_tag "image-stub.svg" %>
+            <% end %>
+          </div>
+          <span class="course-preview__title"><%= course.title %></span>
+        </div>
+      <% end %>
+    </div>
   <% end %>
-</ul>
+</div>
 
 <div class="mt-3">
   <%= link_to t("resources.teacher.courses.new"), new_teacher_course_path,
