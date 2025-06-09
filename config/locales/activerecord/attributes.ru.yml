@@ -5,3 +5,6 @@ ru:
         title: "Название курса"
         description: "Описание курса"
         preview_image: "Изображение курса"
+      lesson:
+        title: "Название урока"
+        content: "Содержание урока"

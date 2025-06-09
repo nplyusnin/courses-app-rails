@@ -1,0 +1,12 @@
+<%= render "teacher/partials/course_tabs" %>
+
+<h1 class="title"><%= @lesson.title %></h1>
+
+<%= @lesson.content %>
+
+<div class="mt-3">
+  <%= link_to t("resources.teacher.lessons.to_index"), teacher_course_lessons_path(@lesson.course),
+                                                       class: "button" %>
+  <%= link_to t("resources.teacher.lessons.edit"), edit_teacher_lesson_path(@lesson),
+                                                   class: "button is-warning" %>
+</div>

@@ -1,0 +1,10 @@
+<%= render "teacher/partials/course_tabs" %>
+
+<%= render "form", model: [:teacher, @lesson], action_name: "edit" %>
+
+<div class="mt-3">
+  <%= link_to t("resources.teacher.lessons.to_index"), teacher_course_lessons_path(@lesson.course),
+                                                       class: "button" %>
+  <%= link_to t("resources.teacher.lessons.to_show"), [:teacher, @lesson],
+                                                      class: "button" %>
+</div>

@@ -1,0 +1,22 @@
+<%= form_with(model:) do |f| %>
+  <div class="card">
+    <header class="card-header">
+      <p class="card-header-title"><%= t("resources.teacher.lessons.#{action_name}") %></p>
+    </header>
+    <div class="card-content">
+      <div class="columns is-multiline">
+        <div class="column is-12">
+          <%= f.text_field :title %>
+        </div>
+
+        <div class="column is-12">
+          <%= f.rich_textarea :content %>
+        </div>
+
+        <div class="column is-12">
+          <%= f.submit t("resources.teacher.courses.save_as_draft") %>
+        </div>
+      </div>
+    </div>
+  </div>
+<% end %>

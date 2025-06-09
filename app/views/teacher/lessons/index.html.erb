@@ -1,0 +1,14 @@
+<%= render "teacher/partials/course_tabs" %>
+
+<h1 class="title"><%= t("resources.teacher.lessons.index", course_title: @course.title) %></h1>
+
+<ul>
+  <% @course.lessons.each do |lesson| %>
+    <li><%= link_to lesson.title, [:teacher, lesson] %></li>
+  <% end %>
+</ul>
+
+<div class="mt-3">
+  <%= link_to t("resources.teacher.lessons.new"), new_teacher_course_lesson_path(@course),
+                                                  class: "button" %>
+</div>

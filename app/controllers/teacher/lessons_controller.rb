@@ -3,6 +3,7 @@ module Teacher
     before_action :authenticate_user!
     before_action :set_lesson, only: [:show, :edit, :update, :destroy]
     before_action :set_course, only: [:index, :new, :create]
+    before_action :load_course, only: [:show, :edit, :update]
 
     def index() = @lessons = @course.lessons.order(:position)
 
@@ -12,9 +13,10 @@ module Teacher
 
     def create
       @lesson = @course.lessons.new(lesson_params)
+      @lesson.position = @course.lessons.maximum(:position).to_i + 1
 
       if @lesson.save
-        redirect_to teacher_course_lesson_path(@course, @lesson), notice: t("notices.teacher.lessons.created")
+        redirect_to teacher_lesson_path(@lesson), notice: t("notices.teacher.lessons.created")
       else
         render :new, status: :unprocessable_entity
       end
@@ -24,7 +26,7 @@ module Teacher
 
     def update
       if @lesson.update(lesson_params)
-        redirect_to teacher_course_lesson_path(@course, @lesson), notice: t("notices.teacher.lessons.updated")
+        redirect_to teacher_lesson_path(@lesson), notice: t("notices.teacher.lessons.updated")
       else
         render :edit, status: :unprocessable_entity
       end
@@ -37,9 +39,11 @@ module Teacher
 
     private
 
+    def set_lesson() = @lesson = Lesson.find(params[:id])
+
     def set_course() = @course = current_user.teaching_courses.find(params[:course_id])
 
-    def set_lesson() = @lesson = Lesson.find(params[:id])
+    def load_course() = @course = @lesson.course
 
     def lesson_params() = params.expect(lesson: [:title, :position, :content])
   end
