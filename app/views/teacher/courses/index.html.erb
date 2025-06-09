@@ -2,6 +2,11 @@
 
 <ul>
   <% @courses.each do |course| %>
-    <li><%= course.title %></li>
+    <li><%= link_to course.title, [:teacher, course] %></li>
   <% end %>
 </ul>
+
+<div class="mt-3">
+  <%= link_to t("resources.teacher.courses.new"), new_teacher_course_path,
+                                        class: "button" %>
+</div>
