@@ -35,7 +35,7 @@ module Teacher
 
     def destroy
       @course.destroy
-      redirect_to teacher_courses_path, notice: I18n.t('notices.teacher.courses.deleted')
+      redirect_to teacher_courses_path, notice: I18n.t('notices.teacher.courses.destroyed')
     end
 
     private
