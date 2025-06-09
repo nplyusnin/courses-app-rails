@@ -23,9 +23,13 @@
   </head>
 
   <body>
-    <p class="notice"><%= notice %></p>
-    <p class="alert"><%= alert %></p>
+    <div class="container">
+      <main class="section">
+        <p class="notice"><%= notice %></p>
+        <p class="alert"><%= alert %></p>
 
-    <%= yield %>
+        <%= yield %>
+      </main>
+    </div>
   </body>
 </html>
