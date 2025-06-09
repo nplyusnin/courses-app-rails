@@ -7,4 +7,10 @@
                                                        class: "button" %>
   <%= link_to t("resources.teacher.lessons.to_show"), [:teacher, @lesson],
                                                       class: "button" %>
+  <%= link_to t("resources.teacher.lessons.destroy"), [:teacher, @lesson],
+                                                      class: "button is-danger", 
+                                                      data: {
+                                                        "turbo-method" => "delete",
+                                                        "turbo-confirm" => t("resources.teacher.lessons.confirm_destroy")
+                                                      } %>
 </div>
