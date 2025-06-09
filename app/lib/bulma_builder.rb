@@ -56,7 +56,7 @@ class BulmaBuilder < ActionView::Helpers::FormBuilder
 
   def submit(value = nil, options = {})
     options[:class] = "button"
-    super(value, options)
+    super
   end
 
   private

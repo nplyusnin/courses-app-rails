@@ -10,6 +10,8 @@
 # See https://docs.rubocop.org/rubocop/configuration
 
 AllCops:
+  NewCops: enable
+  SuggestExtensions: false
   Exclude:
     - 'db/schema.rb'
     - 'bin/*'
