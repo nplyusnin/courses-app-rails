@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 require "rails_helper"
 
 RSpec.describe "Teacher creates a new lesson", type: :system do
@@ -21,7 +23,7 @@ RSpec.describe "Teacher creates a new lesson", type: :system do
       expect(course.reload.lessons.count).to eq(1)
     end
   end
-  
+
   context "with invalid parameters" do
     it "fails to create a lesson with invalid data" do
       click_button I18n.t("resources.teacher.lessons.save_as_draft")

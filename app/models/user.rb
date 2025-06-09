@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class User < ApplicationRecord
   has_many :teaching_courses, class_name: "Course", foreign_key: "teacher_id", dependent: :destroy
 

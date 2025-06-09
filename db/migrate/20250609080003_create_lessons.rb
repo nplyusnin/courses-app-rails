@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class CreateLessons < ActiveRecord::Migration[8.0]
   def change
     create_table :lessons do |t|
@@ -8,7 +10,7 @@ class CreateLessons < ActiveRecord::Migration[8.0]
       t.timestamps
     end
 
-    add_index :lessons, [:course_id, :title], unique: true
-    add_index :lessons, [:course_id, :position], unique: true
+    add_index :lessons, %i[course_id title], unique: true
+    add_index :lessons, %i[course_id position], unique: true
   end
 end

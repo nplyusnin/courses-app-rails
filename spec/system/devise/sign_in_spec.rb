@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 require "rails_helper"
 
 RSpec.describe "Sign in form", type: :system do
@@ -9,7 +11,7 @@ RSpec.describe "Sign in form", type: :system do
     fill_in I18n.t("activerecord.attributes.user.email"), with: user.email
     fill_in I18n.t("activerecord.attributes.user.password"), with: user.password
 
-    click_button I18n.t('devise.sessions.new.sign_in')
+    click_button I18n.t("devise.sessions.new.sign_in")
 
     expect(page).to have_content(I18n.t("devise.sessions.signed_in"))
     expect(page).to have_current_path(root_path)

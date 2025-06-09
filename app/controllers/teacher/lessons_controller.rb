@@ -1,15 +1,17 @@
+# frozen_string_literal: true
+
 module Teacher
   class LessonsController < ApplicationController
     before_action :authenticate_user!
-    before_action :set_lesson, only: [:show, :edit, :update, :destroy]
-    before_action :set_course, only: [:index, :new, :create]
-    before_action :load_course, only: [:show, :edit, :update, :destroy]
+    before_action :set_lesson, only: %i[show edit update destroy]
+    before_action :set_course, only: %i[index new create]
+    before_action :load_course, only: %i[show edit update destroy]
 
-    def index() = @lessons = @course.lessons.order(:position)
+    def index = @lessons = @course.lessons.order(:position)
 
-    def show;end
+    def show; end
 
-    def new() = @lesson = @course.lessons.new
+    def new = @lesson = @course.lessons.new
 
     def create
       @lesson = @course.lessons.new(lesson_params)
@@ -22,7 +24,7 @@ module Teacher
       end
     end
 
-    def edit;end
+    def edit; end
 
     def update
       if @lesson.update(lesson_params)
@@ -39,12 +41,12 @@ module Teacher
 
     private
 
-    def set_lesson() = @lesson = Lesson.find(params[:id])
+    def set_lesson = @lesson = Lesson.find(params[:id])
 
-    def set_course() = @course = current_user.teaching_courses.find(params[:course_id])
+    def set_course = @course = current_user.teaching_courses.find(params[:course_id])
 
-    def load_course() = @course = @lesson.course
+    def load_course = @course = @lesson.course
 
-    def lesson_params() = params.expect(lesson: [:title, :position, :content])
+    def lesson_params = params.expect(lesson: %i[title position content])
   end
 end
