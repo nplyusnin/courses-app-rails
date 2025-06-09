@@ -26,10 +26,19 @@
     <%= render "partials/navbar" %>
 
     <div class="container">
-      <main class="section">
-        <p class="notice"><%= notice %></p>
-        <p class="alert"><%= alert %></p>
+      <% if notice.present? %>
+        <div class="notification is-success my-4">
+          <%= notice %>
+        </div>
+      <% end %>
 
+      <% if alert.present? %>
+        <div class="notification is-danger my-4">
+          <%= alert %>
+        </div>
+      <% end %>
+
+      <main class="section">
         <%= yield %>
       </main>
     </div>

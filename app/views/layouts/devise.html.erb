@@ -23,8 +23,22 @@
   </head>
 
   <body>
-    <p class="notice"><%= notice %></p>
-    <p class="alert"><%= alert %></p>
+    <% if notice.present? %>
+      <div class="container mt-4">
+        <div class="notification is-success">
+          <%= notice %>
+        </div>
+      </div>
+    <% end %>
+
+    <% if alert.present? %>
+      <div class="container mt-4">
+        <div class="notification is-danger">
+          <%= alert %>
+        </div>
+      </div>
+    <% end %>
+
     <div class="devise-wrapper">
       <div class="devise-form box">
         <%= yield %>
