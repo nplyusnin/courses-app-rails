@@ -40,3 +40,6 @@
 
 # Ignore docker-compose.yml file for local development.
 /docker-compose.yml
+
+# Ignore database.yml file for local development.
+/config/database.yml
