@@ -1,0 +1,44 @@
+- hosts: server
+  gather_facts: no
+  become: false
+
+  tasks:
+    - name: pull app repository
+      git:
+        repo: git@github.com:nplyusnin/courses-app-rails.git
+        dest: /apps/courses-app-rails
+        update: yes
+        force: yes
+        accept_hostkey: yes
+    
+    - name: build docker image
+      docker_image:
+        name: courses-app-rails-production
+        source: build
+        force_source: yes
+        build:
+          path: /apps/courses-app-rails
+          dockerfile: /apps/courses-app-rails/.docker/Dockerfile.production
+
+    - name: run database migrations
+      docker_container:
+        name: courses-app-rails-production-migrations
+        image: courses-app-rails-production
+        command: bundle exec rails db:migrate
+        state: started
+        restart_policy: no
+        network_mode: host
+        env:
+          RAILS_ENV: production
+
+    - name: run docker container
+      docker_container:
+        name: courses-app-rails-production
+        image: courses-app-rails-production
+        state: started
+        restart_policy: always
+        network_mode: host
+        ports:
+          - "3000:3000"
+        env:
+          RAILS_ENV: production
