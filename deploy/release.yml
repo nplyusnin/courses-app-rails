@@ -10,8 +10,14 @@
         update: yes
         force: yes
         accept_hostkey: yes
+
+    - name: remove old docker image if exists
+      docker_image:
+        name: courses-app-rails-production
+        state: absent
+        force_absent: yes
     
-    - name: build docker image
+    - name: build new docker image
       docker_image:
         name: courses-app-rails-production
         source: build
@@ -30,8 +36,20 @@
         network_mode: host
         env:
           RAILS_ENV: production
+    
+    - name: remove migration container
+      docker_container:
+        name: courses-app-rails-production-migrations
+        state: absent
+        force_kill: yes
 
-    - name: run docker container
+    - name: remove old docker container
+      docker_container:
+        name: courses-app-rails-production
+        state: absent
+        force_kill: yes
+
+    - name: run new docker container
       docker_container:
         name: courses-app-rails-production
         image: courses-app-rails-production
