@@ -42,3 +42,5 @@
           - "3000:3000"
         env:
           RAILS_ENV: production
+        volumes:
+          - courses-app-rails-storage:/apps/courses-app-rails/storage

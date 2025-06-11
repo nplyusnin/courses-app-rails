@@ -8,3 +8,7 @@
         repo: git@github.com:nplyusnin/courses-app-rails.git
         dest: /apps/courses-app-rails
         accept_hostkey: yes
+
+    - name: Create Docker volume
+      docker_volume:
+        name: courses-app-rails-storage
