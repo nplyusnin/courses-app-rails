@@ -17,6 +17,10 @@ AllCops:
     - 'bin/*'
     - 'vendor/**/*'
 
+Metrics/BlockLength:
+  Exclude:
+    - 'spec/models/**/*'
+
 Metrics/MethodLength:
   Exclude:
     - 'db/migrate/*'
