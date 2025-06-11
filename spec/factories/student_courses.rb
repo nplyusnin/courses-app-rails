@@ -2,7 +2,7 @@
 
 FactoryBot.define do
   factory :student_course do
-    student { nil }
-    course { nil }
+    association(:student)
+    association(:course)
   end
 end

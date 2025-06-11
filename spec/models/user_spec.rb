@@ -23,5 +23,20 @@ RSpec.describe User, type: :model do
         .with_foreign_key("teacher_id")
         .dependent(:destroy)
     end
+
+    it do
+      is_expected.to have_many(:student_courses)
+        .class_name("StudentCourse")
+        .with_foreign_key("student_id")
+        .dependent(:destroy)
+    end
+
+    it do
+      is_expected.to have_many(:study_courses)
+        .through(:student_courses)
+        .class_name("Course")
+        .with_foreign_key("course_id")
+        .source(:course)
+    end
   end
 end
