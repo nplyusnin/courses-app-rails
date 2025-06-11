@@ -43,4 +43,4 @@
         env:
           RAILS_ENV: production
         volumes:
-          - courses-app-rails-storage:/apps/courses-app-rails/storage
+          - /apps/courses-app-rails/storage:/usr/src/app/storage
