@@ -1,5 +1,8 @@
 ru:
   notices:
+    courses:
+      enroll: "Вы успешно записались на курс."
+      already_enrolled: "Вы уже записаны на этот курс."
     teacher:
       courses:
         created: "Курс успешно создан."

@@ -9,7 +9,11 @@ Rails.application.routes.draw do
     end
   end
 
-  resources :courses, only: %i[index show]
+  resources :courses, only: %i[index show] do
+    member do
+      post "enroll", to: "courses#enroll", as: :enroll
+    end
+  end
 
   get "up" => "rails/health#show", as: :rails_health_check
 

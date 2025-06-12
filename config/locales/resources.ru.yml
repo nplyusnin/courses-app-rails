@@ -1,5 +1,9 @@
 ru:
   resources:
+    courses:
+      enroll: "Записаться на курс"
+    my_courses:
+      show: "Продолжить обучение"
     teacher:
       courses:
         index: "Ваши курсы"

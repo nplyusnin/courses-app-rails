@@ -1,3 +1,14 @@
+
+<% if current_user.study_courses.include?(@course) %>
+  <%= link_to t("resources.my_courses.show"), "#", class: "button" %>
+<% else %>
+  <%= link_to t("resources.courses.enroll"), enroll_course_path(@course), 
+                                    class: "button is-primary",
+                                    data: {
+                                      "turbo-method": "post"
+                                    } %>
+<% end %>
+
 <h1 class="title"><%= @course.title %></h1>
 
 <%= @course.description %>
