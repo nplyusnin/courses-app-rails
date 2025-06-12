@@ -1,0 +1,19 @@
+.my-course-preview__title-container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.2rem;
+  font-weight: bold;
+  height: 50px;
+}
+
+.my-course-preview__image-container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 200px;
+  
+  img {
+    width: 60%;
+  }
+}

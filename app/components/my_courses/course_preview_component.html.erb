@@ -1,0 +1,17 @@
+<div class="box my-course-preview">
+  <div class="my-course-preview__image-container">
+    <% if course.preview_image.attached? %>
+      <%= image_tag course.preview_image, alt: course.title %>
+    <% else %>
+      <%= image_tag "image-stub.svg" %>
+    <% end %>
+  </div>
+
+  <div class="my-course-preview__title-container">
+    <span><%= course.title %></span>
+  </div>
+
+  <div class="my-course-preview__button-container">
+    <%= link_to "Продолжить обучение", course_lessons_path(course), class: "button is-fullwidth" %>
+  </div>
+</div>
