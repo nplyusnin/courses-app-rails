@@ -3,18 +3,10 @@
 <div class="columns is-multiline">
   <% @courses.each do |course| %>
     <div class="column is-3">
-      <%= link_to [:teacher, course] do %>
-        <div class="box course-preview">
-          <div class="course-preview__image-container">
-            <% if course.preview_image.attached? %>
-              <%= image_tag course.preview_image.variant(resize_to_limit: [300, 300]),
-                            alt: course.title %>
-            <% else %>
-              <%= image_tag "image-stub.svg" %>
-            <% end %>
-          </div>
-          <span class="course-preview__title"><%= course.title %></span>
-        </div>
+      <%= render Courses::PreviewComponent.new(course:, current_user:) do |component| %>
+        <% component.with_button do %>
+          <%= link_to "Просмотр", [:teacher, course], class: "button is-fullwidth" %>
+        <% end %>
       <% end %>
     </div>
   <% end %>

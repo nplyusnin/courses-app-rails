@@ -3,7 +3,11 @@
 <div class="columns is-multiline mt-3">
   <% @courses.each do |course| %>
     <div class="column is-3">
-      <%= render MyCourses::CoursePreviewComponent.new(course:, current_user:) %>
+      <%= render Courses::PreviewComponent.new(course:, current_user:) do |component| %>
+        <% component.with_button do %>
+          <%= link_to "Продолжить обучение", course_lessons_path(course), class: "button is-fullwidth" %>
+        <% end %>
+      <% end %>
     </div>
   <% end %>
 </ul>
