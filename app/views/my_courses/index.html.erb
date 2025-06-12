@@ -1,1 +1,7 @@
 <h1>Мои курсы</h1>
+
+<ul>
+  <% @courses.each do |course| %>
+    <li><%= link_to course.title, "#" %></li>
+  <% end %>
+</ul>
