@@ -39,6 +39,9 @@ gem "image_processing", "~> 1.2"
 # Use Devise for authentication [https://github.com/heartcombo/devise]
 gem "devise"
 
+# Use for authentication in api [https://github.com/waiting-for-dev/devise-jwt?tab=readme-ov-file]
+gem "devise-jwt"
+
 # Use for internationalization of Devise [https://github.com/tigrish/devise-i18n]
 gem "devise-i18n"
 
