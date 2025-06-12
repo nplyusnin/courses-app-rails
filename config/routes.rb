@@ -10,7 +10,11 @@ Rails.application.routes.draw do
   end
 
   resources :courses, only: %i[index show] do
-    resources :lessons, only: %i[index show]
+    resources :lessons, only: %i[index show] do
+      member do
+        post "done", to: "lessons#done", as: :done
+      end
+    end
 
     member do
       post "enroll", to: "courses#enroll", as: :enroll

@@ -38,5 +38,18 @@ RSpec.describe User, type: :model do
         .with_foreign_key("course_id")
         .source(:course)
     end
+
+    it do
+      is_expected.to have_many(:student_lessons)
+        .with_foreign_key("student_id")
+        .dependent(:destroy)
+    end
+
+    it do
+      is_expected.to have_many(:done_lessons)
+        .class_name("Lesson")
+        .through(:student_lessons)
+        .source(:lesson)
+    end
   end
 end

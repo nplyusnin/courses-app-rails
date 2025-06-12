@@ -1,3 +1,11 @@
+<% if current_user.done_lessons.exclude?(@lesson)%>
+  <%= link_to "Отметить как пройденный", done_course_lesson_path(@course, @lesson),
+                                        class: "button",
+                                        data: {
+                                          "turbo-method": "post",
+                                        } %>
+<% end %>
+
 <h1 class="title"><%= @lesson.title %></h1>
 
 <%= @lesson.content %>
