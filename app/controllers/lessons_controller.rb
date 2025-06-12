@@ -8,7 +8,15 @@ class LessonsController < ApplicationController
     @lessons = current_user.available_lessons(@course)
   end
 
-  def show; end
+  def show
+    @previous_lesson = current_user.available_lessons(@course).filter do |lesson|
+      lesson.position < @lesson.position
+    end.last
+
+    @next_lesson = current_user.available_lessons(@course).filter do |lesson|
+      lesson.position > @lesson.position
+    end.first
+  end
 
   def done
     if current_user.done_lessons.include?(@lesson)
