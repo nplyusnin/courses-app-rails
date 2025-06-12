@@ -4,6 +4,8 @@ ru:
       enroll: "Записаться на курс"
     my_courses:
       show: "Продолжить обучение"
+    lessons:
+      index: "Уроки"
     teacher:
       courses:
         index: "Ваши курсы"
