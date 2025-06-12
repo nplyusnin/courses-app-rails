@@ -114,6 +114,7 @@ GEM
       rails-i18n
     diff-lcs (1.6.2)
     drb (2.2.3)
+    dry-initializer (3.2.0)
     erb (5.0.1)
     erubi (1.13.1)
     factory_bot (6.5.3)
@@ -159,6 +160,7 @@ GEM
       net-smtp
     marcel (1.0.4)
     matrix (0.4.2)
+    method_source (1.1.0)
     mini_magick (5.2.0)
       benchmark
       logger
@@ -322,6 +324,10 @@ GEM
     unicode-emoji (4.0.4)
     uri (1.0.3)
     useragent (0.16.11)
+    view_component (3.23.2)
+      activesupport (>= 5.2.0, < 8.1)
+      concurrent-ruby (~> 1)
+      method_source (~> 1.0)
     warden (1.2.9)
       rack (>= 2.0.9)
     web-console (4.2.1)
@@ -357,6 +363,7 @@ DEPENDENCIES
   debug
   devise
   devise-i18n
+  dry-initializer
   factory_bot_rails
   image_processing (~> 1.2)
   importmap-rails
@@ -372,6 +379,7 @@ DEPENDENCIES
   thruster
   turbo-rails
   tzinfo-data
+  view_component
   web-console
 
 BUNDLED WITH

@@ -45,6 +45,12 @@ gem "devise-i18n"
 # Use for internationalization of Rails [https://github.com/svenfuchs/rails-i18n]
 gem "rails-i18n"
 
+# Reusable, testable & encapsulated view components [https://viewcomponent.org]
+gem "view_component"
+
+# Add methods params and options for instances
+gem "dry-initializer"
+
 group :development, :test do
   # See https://guides.rubyonrails.org/debugging_rails_applications.html#debugging-with-the-debug-gem
   gem "debug", platforms: %i[mri windows], require: "debug/prelude"
