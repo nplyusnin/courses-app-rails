@@ -20,6 +20,7 @@ AllCops:
 Metrics/BlockLength:
   Exclude:
     - 'config/routes.rb'
+    - 'spec/swagger_helper.rb'
     - 'spec/models/**/*'
     - 'spec/requests/**/*'
 
