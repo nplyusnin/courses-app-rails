@@ -61,6 +61,33 @@ describe "User Sessions API", type: :request do
           }
         end
 
+        schema type: :object,
+               properties: {
+                 error: {
+                   type: :string,
+                   example: I18n.t("devise.failure.unauthenticated")
+                 }
+               }
+
+        run_test!
+      end
+    end
+  end
+
+  path "/api/v1/users" do
+    let!(:registred_user) { create(:user) }
+
+    delete "Sign out a user" do
+      tags "User Sessions"
+      consumes "application/json"
+      produces "application/json"
+      parameter name: :Authorization, in: :header, type: :string
+
+      response "204", "Not content" do
+        let(:Authorization) do
+          "Bearer #{Warden::JWTAuth::UserEncoder.new.call(registred_user, :user, 'JWT_AUD').first}"
+        end
+
         run_test!
       end
     end

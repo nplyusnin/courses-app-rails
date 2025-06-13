@@ -34,6 +34,14 @@ paths:
                         format: date_time
         '401':
           description: Invalid credentials
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  error:
+                    type: string
+                    example: Вам необходимо войти в систему или зарегистрироваться.
       requestBody:
         content:
           application/json:
@@ -55,4 +63,4 @@ servers:
 - url: https://{defaultHost}
   variables:
     defaultHost:
-      default: courses-app-rails.plyusnin.dev
+      default: www.example.com

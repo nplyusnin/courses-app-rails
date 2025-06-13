@@ -1,6 +1,8 @@
 # frozen_string_literal: true
 
 class User < ApplicationRecord
+  include Devise::JWT::RevocationStrategies::Allowlist
+
   has_many :teaching_courses, class_name: "Course", foreign_key: "teacher_id", dependent: :destroy
   has_many :student_courses, class_name: "StudentCourse", foreign_key: "student_id", dependent: :destroy
   has_many :study_courses, through: :student_courses, class_name: "Course", foreign_key: "course_id", source: :course
