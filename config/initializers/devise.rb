@@ -314,6 +314,11 @@ Devise.setup do |config|
   # ==> Configuration for :jwt_authenticatable
   config.jwt do |jwt|
     jwt.secret = Rails.application.credentials.devise_jwt_secret_key!
-    jwt.request_formats = { user: [:json] }
+    jwt.dispatch_requests = [
+      ["POST", %r{^/api/v1/users/sign_in$}]
+    ]
+    jwt.revocation_requests = [
+      ["DELETE", %r{^/api/v1/users$}]
+    ]
   end
 end

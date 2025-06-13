@@ -3,6 +3,18 @@
 Rails.application.routes.draw do
   devise_for :users
 
+  namespace :api do
+    namespace :v1 do
+      namespace :users do
+        devise_scope :user do
+          post "sign_in", to: "sessions#create"
+          delete "/", to: "sessions#destroy"
+          post "sign_up", to: "registrations#create"
+        end
+      end
+    end
+  end
+
   namespace :teacher do
     resources :courses, shallow: true do
       resources :lessons
