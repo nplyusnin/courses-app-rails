@@ -15,6 +15,8 @@ Rails.application.routes.draw do
           post "sign_up", to: "registrations#create"
         end
       end
+
+      resources :courses, only: %i[index show], format: :json
     end
   end
 

@@ -6,4 +6,6 @@ class ApplicationController < ActionController::Base
 
   # Use bulma form builder by default
   default_form_builder BulmaBuilder
+
+  before_action :authenticate_user!
 end

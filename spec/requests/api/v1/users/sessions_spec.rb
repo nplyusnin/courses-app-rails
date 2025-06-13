@@ -75,18 +75,25 @@ describe "User Sessions API", type: :request do
   end
 
   path "/api/v1/users" do
-    let!(:registred_user) { create(:user) }
+    let!(:user) { create(:user) }
 
     delete "Sign out a user" do
       tags "User Sessions"
       consumes "application/json"
       produces "application/json"
+
       parameter name: :Authorization, in: :header, type: :string
 
       response "204", "Not content" do
         let(:Authorization) do
-          "Bearer #{Warden::JWTAuth::UserEncoder.new.call(registred_user, :user, 'JWT_AUD').first}"
+          generate_bearer_token_for(user)
         end
+
+        run_test!
+      end
+
+      response "204", "Not content" do
+        let(:Authorization) { nil }
 
         run_test!
       end
