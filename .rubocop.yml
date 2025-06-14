@@ -23,6 +23,7 @@ Metrics/BlockLength:
     - 'spec/swagger_helper.rb'
     - 'spec/models/**/*'
     - 'spec/requests/**/*'
+    - 'spec/system/**/*'
 
 Metrics/MethodLength:
   Exclude:
