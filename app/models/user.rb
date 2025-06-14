@@ -20,22 +20,4 @@ class User < ApplicationRecord
          :validatable,
          :jwt_authenticatable,
          jwt_revocation_strategy: self
-
-  def available_lessons(course)
-    course_done_lessons = done_lessons.where(course:)
-
-    if course_done_lessons.size == course.lessons.size
-      course.lessons.order(:position).to_a
-    elsif course_done_lessons.empty?
-      course.lessons.order(:position).first(1).to_a
-    else
-      course_done_lessons.where(course:) + [next_available_lesson(course)]
-    end
-  end
-
-  def next_available_lesson(course)
-    course.lessons.order(:position).find do |lesson|
-      done_lessons.exclude?(lesson)
-    end
-  end
 end

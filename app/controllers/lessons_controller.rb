@@ -2,18 +2,17 @@
 
 class LessonsController < ApplicationController
   before_action :set_course
+  before_action :set_lessons
   before_action :set_lesson, only: %i[show done]
 
-  def index
-    @lessons = current_user.available_lessons(@course)
-  end
+  def index; end
 
   def show
-    @previous_lesson = current_user.available_lessons(@course).filter do |lesson|
+    @previous_lesson = @lessons.filter do |lesson|
       lesson.position < @lesson.position
     end.last
 
-    @next_lesson = current_user.available_lessons(@course).filter do |lesson|
+    @next_lesson = @lessons.filter do |lesson|
       lesson.position > @lesson.position
     end.first
   end
@@ -31,8 +30,12 @@ class LessonsController < ApplicationController
 
   def set_course = @course = Course.find(params[:course_id])
 
+  def set_lessons
+    @lessons = Users::AvailableLessonsQuery.new(current_user, @course).resolve
+  end
+
   def set_lesson
-    @lesson = current_user.available_lessons(@course).find do |lesson|
+    @lesson = @lessons.find do |lesson|
       lesson.id == params[:id].to_i
     end
   end
