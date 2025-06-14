@@ -2,18 +2,18 @@
 
 module Api
   module V1
-    module Students
+    module Student
       class LessonsController < Api::V1::BaseController
         before_action :set_course
         before_action :set_lessons
         before_action :set_lesson, only: %i[show done]
 
         def index
-          render json: @lessons.map { LessonPreviewSerializer.new(it) }
+          render json: @lessons.map { Api::V1::Student::LessonPreviewSerializer.new(it) }
         end
 
         def show
-          render json: LessonDetailsSerializer.new(@lesson).as_json.merge(
+          render json: Api::V1::Student::LessonDetailsSerializer.new(@lesson).as_json.merge(
             next_lesson_id: @lessons.find { |l| l.position > @lesson.position }&.id,
             previous_lesson_id: @lessons.find { |l| l.position < @lesson.position }&.id
           )

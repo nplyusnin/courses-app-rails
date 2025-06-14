@@ -8,7 +8,7 @@ describe "User Lessons API", type: :request do
   let(:lesson) { lessons.first }
   let!(:student) { create(:student) }
 
-  path "/api/v1/students/courses/{course_id}/lessons" do
+  path "/api/v1/student/courses/{course_id}/lessons" do
     get "List of study lessons" do
       tags "Study Lessons List"
       consumes "application/json"
@@ -38,7 +38,7 @@ describe "User Lessons API", type: :request do
     end
   end
 
-  path "/api/v1/students/courses/{course_id}/lessons/{id}" do
+  path "/api/v1/student/courses/{course_id}/lessons/{id}" do
     get "Lesson details" do
       tags "Lesson Details"
       consumes "application/json"
@@ -68,7 +68,7 @@ describe "User Lessons API", type: :request do
     end
   end
 
-  path "/api/v1/students/courses/{course_id}/lessons/{id}/done" do
+  path "/api/v1/student/courses/{course_id}/lessons/{id}/done" do
     post "Mark lesson as done" do
       tags "Mark Lesson as Done"
       consumes "application/json"

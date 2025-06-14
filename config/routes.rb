@@ -16,7 +16,7 @@ Rails.application.routes.draw do
         end
       end
 
-      namespace :students do
+      namespace :student do
         resources :courses, only: %i[index], format: :json do
           resources :lessons, only: %i[index show], format: :json do
             member do

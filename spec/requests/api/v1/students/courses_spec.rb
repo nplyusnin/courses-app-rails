@@ -3,7 +3,7 @@
 require "swagger_helper"
 
 describe "User Courses API", type: :request do
-  path "/api/v1/students/courses" do
+  path "/api/v1/student/courses" do
     let!(:courses) { create_list(:course, 2) }
     let!(:student) { create(:student) }
 
