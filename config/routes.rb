@@ -17,7 +17,7 @@ Rails.application.routes.draw do
       end
 
       namespace :students do
-        resources :courses, only: %i[index show], format: :json
+        resources :courses, only: %i[index], format: :json
       end
 
       resources :courses, only: %i[index show], format: :json
