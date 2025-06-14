@@ -4,6 +4,74 @@ info:
   title: API V1
   version: v1
 paths:
+  "/api/v1/courses":
+    get:
+      summary: List of courses
+      tags:
+      - Courses List
+      parameters:
+      - name: Authorization
+        in: header
+        schema:
+          type: string
+      responses:
+        '200':
+          description: Ok
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  type: object
+                  properties:
+                    id:
+                      type: integer
+                    title:
+                      type: string
+                    preview_image:
+                      type: string
+                      nullable: true
+                  required:
+                  - id
+                  - title
+                  - preview_image
+  "/api/v1/courses/{id}":
+    get:
+      summary: Course details
+      tags:
+      - Course Details
+      parameters:
+      - name: Authorization
+        in: header
+        schema:
+          type: string
+      - name: id
+        in: path
+        required: true
+        schema:
+          type: string
+      responses:
+        '200':
+          description: Ok
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  id:
+                    type: integer
+                  title:
+                    type: string
+                  image_preview:
+                    type: string
+                    nullable: true
+                  description:
+                    type: string
+                required:
+                - id
+                - title
+                - image_preview
+                - description
   "/api/v1/users/sign_in":
     post:
       summary: Sign in a user
@@ -59,8 +127,27 @@ paths:
                   required:
                   - email
                   - password
+  "/api/v1/users":
+    delete:
+      summary: Sign out a user
+      tags:
+      - User Sessions
+      parameters:
+      - name: Authorization
+        in: header
+        schema:
+          type: string
+      responses:
+        '204':
+          description: Not content
 servers:
 - url: https://{defaultHost}
   variables:
     defaultHost:
       default: www.example.com
+components:
+  Bearer:
+    type: apiKey
+    name: Authorization
+    in: header
+    description: Your Bearer token

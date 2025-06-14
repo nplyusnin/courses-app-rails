@@ -9,7 +9,8 @@ module Api
       end
 
       def show
-        render json: Course.find(params[:id]), status: :ok
+        course_serialized = CourseDetailsSerializer.new(Course.find(params[:id])).as_json
+        render json: course_serialized, status: :ok
       rescue ActiveRecord::RecordNotFound
         render json: {}, status: :not_found
       end

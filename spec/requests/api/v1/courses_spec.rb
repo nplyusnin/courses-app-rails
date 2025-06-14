@@ -26,7 +26,8 @@ describe "User Courses API", type: :request do
                    id: { type: :integer },
                    title: { type: :string },
                    preview_image: { type: :string, nullable: true }
-                 }
+                 },
+                 required: %w[id title preview_image]
                }
 
         run_test!
@@ -56,9 +57,10 @@ describe "User Courses API", type: :request do
                properties: {
                  id: { type: :integer },
                  title: { type: :string },
-                 created_at: { type: :string },
-                 updated_at: { type: :string }
-               }
+                 image_preview: { type: :string, nullable: true },
+                 description: { type: :string }
+               },
+               required: %w[id title image_preview description]
 
         run_test!
       end
