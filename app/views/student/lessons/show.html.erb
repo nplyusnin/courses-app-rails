@@ -1,13 +1,13 @@
 <% if @previous_lesson %>
-  <%= link_to "Предыдущий урок", course_lesson_path(@course, @previous_lesson), class: "button" %>
+  <%= link_to "Предыдущий урок", [:student, @course, @previous_lesson], class: "button" %>
 <% end %>
 
 <% if @next_lesson %>
-  <%= link_to "Следующий урок", course_lesson_path(@course, @next_lesson), class: "button" %>
+  <%= link_to "Следующий урок", [:student, @course, @next_lesson], class: "button" %>
 <% end %>
 
 <% if current_user.done_lessons.exclude?(@lesson)%>
-  <%= link_to "Отметить как пройденный", done_course_lesson_path(@course, @lesson),
+  <%= link_to "Отметить как пройденный", done_student_course_lesson_path(@course, @lesson),
                                         class: "button",
                                         data: {
                                           "turbo-method": "post",

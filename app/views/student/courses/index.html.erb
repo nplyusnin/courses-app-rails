@@ -5,7 +5,7 @@
     <div class="column is-3">
       <%= render Courses::PreviewComponent.new(course:, current_user:) do |component| %>
         <% component.with_button do %>
-          <%= link_to "Продолжить обучение", course_lessons_path(course), class: "button is-fullwidth" %>
+          <%= link_to "Продолжить обучение", student_course_lessons_path(course), class: "button is-fullwidth" %>
         <% end %>
       <% end %>
     </div>

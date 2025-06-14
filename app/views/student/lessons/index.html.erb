@@ -2,6 +2,6 @@
 
 <ul>
   <% @lessons.each do |lesson| %>
-    <li><%= link_to lesson.title, course_lesson_path(@course, lesson)  %></li>
+    <li><%= link_to lesson.title, [:student, @course, lesson]  %></li>
   <% end %>
 </ul>

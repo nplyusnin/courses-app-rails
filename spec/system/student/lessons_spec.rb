@@ -14,7 +14,7 @@ RSpec.describe "Student Lessons", type: :system do
 
   context "when complete lessons not exists" do
     it "displays only first lesson" do
-      visit course_lessons_path(course)
+      visit student_course_lessons_path(course)
 
       expect(page).to have_content(lessons.first.title)
       expect(page).not_to have_content(lessons.second.title)
@@ -28,7 +28,7 @@ RSpec.describe "Student Lessons", type: :system do
     end
 
     it "displays first and second lessons" do
-      visit course_lessons_path(course)
+      visit student_course_lessons_path(course)
 
       expect(page).to have_content(lessons.first.title)
       expect(page).to have_content(lessons.second.title)
@@ -42,7 +42,7 @@ RSpec.describe "Student Lessons", type: :system do
     end
 
     it "displays all lessons" do
-      visit course_lessons_path(course)
+      visit student_course_lessons_path(course)
 
       lessons.each { expect(page).to have_content(it.title) }
     end

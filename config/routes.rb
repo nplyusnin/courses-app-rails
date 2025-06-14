@@ -30,6 +30,16 @@ Rails.application.routes.draw do
     end
   end
 
+  namespace :student do
+    resources :courses, only: %i[index] do
+      resources :lessons, only: %i[index show] do
+        member do
+          post "done", to: "lessons#done", as: :done
+        end
+      end
+    end
+  end
+
   namespace :teacher do
     resources :courses, shallow: true do
       resources :lessons
@@ -37,12 +47,6 @@ Rails.application.routes.draw do
   end
 
   resources :courses, only: %i[index show] do
-    resources :lessons, only: %i[index show] do
-      member do
-        post "done", to: "lessons#done", as: :done
-      end
-    end
-
     member do
       post "enroll", to: "courses#enroll", as: :enroll
     end
