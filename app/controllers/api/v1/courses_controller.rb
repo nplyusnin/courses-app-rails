@@ -4,7 +4,8 @@ module Api
   module V1
     class CoursesController < BaseController
       def index
-        render json: Course.all, status: :ok
+        courses_serialized = Course.all.map { CoursePreviewSerializer.new(it).as_json }
+        render json: courses_serialized, status: :ok
       end
 
       def show

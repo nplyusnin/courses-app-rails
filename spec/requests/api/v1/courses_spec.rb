@@ -25,9 +25,7 @@ describe "User Courses API", type: :request do
                  properties: {
                    id: { type: :integer },
                    title: { type: :string },
-                   teacher_id: { type: :integer },
-                   created_at: { type: :string },
-                   updated_at: { type: :string }
+                   preview_image: { type: :string, nullable: true }
                  }
                }
 
@@ -58,7 +56,6 @@ describe "User Courses API", type: :request do
                properties: {
                  id: { type: :integer },
                  title: { type: :string },
-                 teacher_id: { type: :integer },
                  created_at: { type: :string },
                  updated_at: { type: :string }
                }
