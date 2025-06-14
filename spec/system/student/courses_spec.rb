@@ -2,7 +2,7 @@
 
 require "rails_helper"
 
-RSpec.describe "My Courses", type: :system do
+RSpec.describe "Student Courses", type: :system do
   let(:student) { create(:student) }
   let!(:student_course) { create_list(:student_course, 2, student: student) }
   let!(:other_student_course) { create_list(:student_course, 2) }
