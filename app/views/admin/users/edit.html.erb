@@ -1,0 +1,32 @@
+<%= form_with(model: [:admin, @user]) do |f| %>
+  <div class="card">
+    <header class="card-header">
+      <p class="card-header-title"><%= t("resources.admin.users.edit") %></p>
+    </header>
+    <div class="card-content">
+      <div class="columns is-multiline">
+        <div class="column is-12">
+          <%= f.text_field :email, required: true, autofocus: true %>
+        </div>
+
+        <div class="column is-12">
+          <%= f.select :role, User.roles.values.filter { _1 != "admin" }.map { [t("resources.admin.users.roles.#{_1}"), _1] } %>
+        </div>
+
+        <div class="column is-12">
+          <%= f.submit t("resources.admin.users.update"), class: "button is-primary" %>
+        </div>
+      </div>
+    </div>
+  </div>
+<% end %>
+
+<div class="mt-3">
+  <%= link_to t("resources.admin.users.to_index"), admin_users_path, class: "button" %>
+  <%= link_to t("resources.admin.users.destroy"), [:admin, @user],
+                                                 class: "button is-danger",
+                                                 data: {
+                                                   "turbo-confirm": t("resources.admin.users.confirm_destroy"),
+                                                   "turbo-method": :delete
+                                                 } %>
+</div>

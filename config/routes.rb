@@ -30,6 +30,10 @@ Rails.application.routes.draw do
     end
   end
 
+  namespace :admin do
+    resources :users, except: %i[new create]
+  end
+
   namespace :student do
     resources :courses, only: %i[index] do
       resources :lessons, only: %i[index show] do

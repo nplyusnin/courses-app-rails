@@ -8,3 +8,5 @@ ru:
       lesson:
         title: "Название урока"
         content: "Содержание урока"
+      user:
+        role: "Роль"
