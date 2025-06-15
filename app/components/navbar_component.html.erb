@@ -22,13 +22,15 @@
           <a class="navbar-item" href="<%= courses_path %>">
             Все
           </a>
-          <a class="navbar-item" href="<%= teacher_courses_path %>">
-            Преподаваемые
-          </a>
+          <% if policy([:teacher, :course]).index? %>
+            <a class="navbar-item" href="<%= teacher_courses_path %>">
+              Преподаваемые
+            </a>
+          <% end %>
         </div>
       </div>
       
-      <% if policy(:user).index? %>
+      <% if policy([:admin, :user]).index? %>
         <a class="navbar-item" href="<%= admin_users_path %>">
           Пользователи
         </a>

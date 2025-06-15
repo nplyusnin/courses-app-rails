@@ -6,15 +6,15 @@ module Admin
 
     def index
       @users = User.where.not(role: :admin)
-      authorize @users
+      authorize [:admin, @users]
     end
 
     def edit
-      authorize @user
+      authorize [:admin, @user]
     end
 
     def update
-      authorize @user
+      authorize [:admin, @user]
 
       if @user.update(user_params)
         redirect_to admin_users_path, notice: t("notices.admin.users.updated")
@@ -24,7 +24,7 @@ module Admin
     end
 
     def destroy
-      authorize @user
+      authorize [:admin, @user]
       @user.destroy
       redirect_to admin_users_path, notice: t("notices.admin.users.destroyed")
     end
