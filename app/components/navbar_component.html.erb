@@ -27,6 +27,12 @@
           </a>
         </div>
       </div>
+      
+      <% if policy(:user).index? %>
+        <a class="navbar-item" href="<%= admin_users_path %>">
+          Пользователи
+        </a>
+      <% end %>
     </div>
 
     <div class="navbar-end">

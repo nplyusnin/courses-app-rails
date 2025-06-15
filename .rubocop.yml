@@ -21,9 +21,7 @@ Metrics/BlockLength:
   Exclude:
     - 'config/routes.rb'
     - 'spec/swagger_helper.rb'
-    - 'spec/models/**/*'
-    - 'spec/requests/**/*'
-    - 'spec/system/**/*'
+    - 'spec/**/*.rb'
 
 Metrics/MethodLength:
   Exclude:
