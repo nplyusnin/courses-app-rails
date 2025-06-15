@@ -7,14 +7,23 @@ module Teacher
     before_action :set_course, only: %i[index new create]
     before_action :load_course, only: %i[show edit update destroy]
 
-    def index = @lessons = @course.lessons.order(:position)
+    def index
+      authorize [:teacher, Lesson]
+      @lessons = @course.lessons.order(:position)
+    end
 
-    def show; end
+    def show
+      authorize [:teacher, @lesson]
+    end
 
-    def new = @lesson = @course.lessons.new
+    def new
+      @lesson = @course.lessons.new
+      authorize [:teacher, @lesson]
+    end
 
     def create
       @lesson = @course.lessons.new(lesson_params)
+      authorize [:teacher, @lesson]
       @lesson.position = @course.lessons.maximum(:position).to_i + 1
 
       if @lesson.save
@@ -24,9 +33,13 @@ module Teacher
       end
     end
 
-    def edit; end
+    def edit
+      authorize [:teacher, @lesson]
+      @course = @lesson.course
+    end
 
     def update
+      authorize [:teacher, @lesson]
       if @lesson.update(lesson_params)
         redirect_to teacher_lesson_path(@lesson), notice: t("notices.teacher.lessons.updated")
       else
@@ -35,6 +48,7 @@ module Teacher
     end
 
     def destroy
+      authorize [:teacher, @lesson]
       @lesson.destroy
       redirect_to teacher_course_lessons_path(@course), notice: t("notices.teacher.lessons.destroyed")
     end
